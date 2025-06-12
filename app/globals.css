@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #0C2140;
+  --primary-muted: #1E3A5F;
+  --text-primary: #242424;
+  --paragraph: #767676;
+  --text-muted-100: #333333;
+  --text-muted-50: #919191;
+  --text-muted-25: #dfdfe6;
+
+}
+
+@layer base {
+  body {
+    @apply text-text-primary
+  }
+  .wrapper {
+    @apply px-4 w-full max-w-[1376px] mx-auto
+  }
+  .animate {
+    @apply transition-all duration-300 ease-out
+  }
+}
+
+/* .custom-dot {
+  @apply w-2 h-2 bg-green-300 rounded-full transition-all mx-1;
+}
+
+.swiper-pagination-bullet-active.custom-dot {
+  @apply bg-black scale-125;
+} */
+
+.cat-slider{
+  @apply !pb-8
+}
+
+.swiper-pagination-bullet{
+  @apply !bg-primary
+}
+
+
+.product-slider .slick-dots {
+  @apply absolute top-full md:top-0 md:-left-[140px] !w-full md:!w-[120px] h-fit !flex md:flex-col gap-2 !mt-4 md:!mt-0
+}
+
+.product-slider .slick-dots li {
+  @apply !max-w-[60px] md:!max-w-[120px] aspect-[4/5] !w-full !h-auto !m-0 !opacity-50 transition-all duration-300 ease-in-out
+}
+
+.product-slider .slick-dots li img {
+  @apply !w-full !h-full object-cover
+}
+
+.product-slider .slick-dots li.slick-active {
+  @apply !opacity-100 border border-primary
+}
+
+.pro-slider .slick-list {
+  @apply !h-full
+}
+
+.pro-slider .slick-list .slick-track {
+  @apply !h-full
+}
+
+.pro-slider .slick-list .slick-track div {
+  @apply !h-full
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
