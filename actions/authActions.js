@@ -1,5 +1,5 @@
 "use server";
-import { signIn } from "@/lib/auth";
+import { signIn, signOut } from "@/lib/auth";
 import bcrypt from "bcryptjs";
 
 
@@ -56,6 +56,8 @@ export const registerUser = async (data) => {
             body: JSON.stringify(newUser),
         });
 
+        console.log(res)
+
         return {
             status: true,
         }
@@ -92,6 +94,7 @@ export const loginUser = async (data) => {
         });
 
 
+
         return {
             status: true,
             message: "Login successful"
@@ -105,6 +108,10 @@ export const loginUser = async (data) => {
     }
 }
 
+
+export const logout = async () => {
+    await signOut();
+}
 
 
 

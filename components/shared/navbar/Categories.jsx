@@ -4,11 +4,15 @@ import { AlignJustify, ChevronDown } from "lucide-react";
 import Link from "next/link";
 // import CategoriesItem from "./categoriesItem";
 // import { categories } from "@/constant/categories";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Categories = ({ categories }) => {
     const [isOpen, setIsOpen] = useState(false);
     const containerRef = useRef(null);
+
+    useEffect(() => {
+        console.log(categories)
+    }, [categories])
 
     return (
         <div className='hidden lg:block h-[54PX] w-[25%] max-w-72 relative' ref={containerRef} onMouseEnter={() => setIsOpen(true)}
@@ -36,17 +40,12 @@ const Categories = ({ categories }) => {
                                     <span>
                                     </span>
                                 </Link>
-                                <div className="animate absolute hidden group-hover:grid w-[720px] h-full min-h-fit left-[calc(100%_+_1px)] top-0 bg-white border-r border-b border-border grid-cols-3 2xl:grid-cols-4 p-6 gap-x-2 gap-y-5 row-auto place-content-start opacity-0 invisible group-hover:visible group-hover:opacity-100 shadow-md">
-                                    {/* {
-                                category?.subcategories.map((subCat) => (<div className='flex flex-col' key={subCat.id}>
-                                    <Link href={subCat.url} className='font-bold text-base hover:text-secondary'>{subCat.name}</Link>
-                                    <div className='w-full h-full p-3 flex flex-col items-start gap-1'>
-                                        {subCat?.subcategories.map((ssCat) => (<Link className='link leading-none' href={ssCat.url} key={ssCat.id}>
-                                            {ssCat.name}
-                                        </Link>))}
-                                    </div>
-                                </div>))
-                            } */}
+                                <div className="animate absolute hidden group-hover:grid w-[720px] h-full min-h-fit left-[calc(100%_+_1px)] top-0 bg-white border-r border-b border-border grid-cols-3 p-6 gap-x-2 gap-y-5 row-auto place-content-start opacity-0 invisible group-hover:visible group-hover:opacity-100 shadow-md">
+                                    {
+                                        category?.sub_categories.map((subCat) => (<div className='flex flex-col' key={subCat.id}>
+                                            <Link href={`/products?categories=${category?.slug}&sub_categories=${subCat.slug}`} className='hover:text-primary'>{subCat.name}</Link>
+                                        </div>))
+                                    }
                                 </div>
                             </div>
                         ))

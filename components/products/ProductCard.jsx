@@ -25,7 +25,10 @@ const ProductCard = ({ className, product }) => {
     return (
         <div className={cn('flex flex-col gap-4 pb-4', className)}>
             <div className='w-full overflow-hidden'>
-                <Image alt='' className='transition-all duration-300 ease-out hover:scale-110 aspect-[4/5]' src={getImageUrl(product?.img[0])} width={400} height={500} />
+                {
+                    product?.img?.[0] && 
+                    <Image alt='' className='transition-all duration-300 ease-out hover:scale-110 aspect-[4/5]' src={getImageUrl(product?.img[0])} width={400} height={500} />
+                }
             </div>
             <div className='flex flex-col gap-3 items-center'>
                 <Link href={`/products/${product?.slug}`} className='text-center line-clamp-2 text-sm text-text-muted-100 hover:text-paragraph'>{product?.title}</Link>

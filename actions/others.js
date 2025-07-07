@@ -174,3 +174,32 @@ export const getReview = async () => {
         return { message: 'Somthing Want wrong!' };
     }
 }
+
+export const getProfile = async (id) => {
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/getProfile/${id}`, {
+            cache: "no-cache"
+        });
+
+        if (!res.ok) {
+            throw new Error('Network Error!');
+        } return await res.json();
+    } catch (err) {
+        return { message: 'Somthing Want wrong!' };
+    }
+}
+
+
+export const getOrder = async (id) => {
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/singleOrder/${id}`, {
+            cache: "no-cache"
+        });
+
+        if (!res.ok) {
+            throw new Error('Network Error!');
+        } return await res.json();
+    } catch (err) {
+        return { message: 'Somthing Want wrong!' };
+    }
+}

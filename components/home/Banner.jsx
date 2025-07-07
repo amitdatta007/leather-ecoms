@@ -7,7 +7,8 @@ import getImageUrl from "@/utils/getImageUrl";
 
 const Banner = ({ banners }) => {
     return (
-        <section className="wrapper grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+        // <section className="wrapper grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+        <section className="wrapper">
             <div className="col-span-2">
                 <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
                     {
@@ -27,14 +28,14 @@ const Banner = ({ banners }) => {
                     }
                 </Swiper>
             </div>
-            <div className="flex flex-row md:flex-col gap-3">
+            {/* <div className="flex flex-row md:flex-col gap-3">
                 <div className="w-full">
-                    {/* <Image alt="" src={banner} className="w-full" /> */}
+                    <Image alt="" src={banner} className="w-full" />
                 </div>
                 <div className="w-full">
-                    {/* <Image alt="" src={banner} className="w-full" /> */}
+                    <Image alt="" src={banner} className="w-full" />
                 </div>
-            </div>
+            </div> */}
         </section>
     );
 };

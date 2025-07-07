@@ -16,13 +16,19 @@ import getImageUrl from "@/utils/getImageUrl";
 import NavLink from "./NavLink";
 import { useDispatch } from "react-redux";
 import { openCart } from "@/lib/app/features/cart/cartSlice";
+import { useSession } from 'next-auth/react'
+
 
 
 
 const Navbar = ({ settings, categories }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const { authData } = useAuth();
+    // const { authData } = useAuth();
     const dispatch = useDispatch();
+
+    const { data: session, status } = useSession();
+
+    
 
 
     return (
@@ -49,7 +55,7 @@ const Navbar = ({ settings, categories }) => {
                         <DesktopSearch />
                         <div className="hidden lg:flex gap-4 items-center ">
                             {
-                                authData?.user?.email ? <Link href='/my-account' className="text-[13px] font-bold hover:text-text-muted-50">MY ACCOUNT</Link> : <Link href='/login' className="text-[13px] font-bold hover:text-text-muted-50">LOGIN / REGISTER</Link>
+                                session?.user ? <Link href='/my-account' className="text-[13px] font-bold hover:text-text-muted-50">MY ACCOUNT</Link> : <Link href='/login' className="text-[13px] font-bold hover:text-text-muted-50">LOGIN / REGISTER</Link>
                             }
 
                             <Link href='/wishlist' className="-mt-1 hover:text-text-muted-50 relative">

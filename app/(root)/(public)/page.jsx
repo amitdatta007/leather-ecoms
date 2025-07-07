@@ -1,5 +1,5 @@
 import { getBanners } from "@/actions/others";
-import { getBrands, getCategories, getProducts } from "@/actions/products";
+import { getBrands, getCampaigns, getCategories, getProducts } from "@/actions/products";
 import Banner from "@/components/home/Banner";
 import Campaign from "@/components/home/campaign";
 import FeatureCategories from "@/components/home/featureCategories";
@@ -12,7 +12,7 @@ import TopBrands from "@/components/home/topBrands";
 
 const HomePage = async () => {
 
-    const [categories, brands, banners, featureProducts, showProduct1, showProduct2, showProduct3] = await Promise.all([
+    const [categories, brands, banners, featureProducts, campaigns] = await Promise.all([
         getCategories(),
         getBrands(),
         getBanners(),
@@ -20,6 +20,7 @@ const HomePage = async () => {
             sort_by: 'latest',
             limit: 12
         }),
+        getCampaigns(),
     ]);
 
 
@@ -27,16 +28,22 @@ const HomePage = async () => {
         <main className="bg-[#FFFCF4] mt-[72px] lg:mt-[150px]">
             <Banner banners={banners?.data} />
             <Services />
-            {/* <Campaign /> */}
+
+            {
+                campaigns?.data?.map((campaign, i) => (
+                    <Campaign key={i} campaign={campaign}  />
+                ))
+            }
+
+
+
             <FeatureProducts products={featureProducts?.data} />
             <FeatureCategories categories={categories?.data} />
             {/* <SecondaryBanner /> */}
 
-    
-{/* 
-            <ShowProductsInSlide category={showCategory1} />
-            <ShowProductsInSlide category={showCategory2} />
-            <ShowProductsInSlide category={showCategory3} /> */}
+
+            
+            {/* <ShowProductsInSlide category={showCategory1} /> */}
 
             <ProductByCategories categories={categories?.data} />
 

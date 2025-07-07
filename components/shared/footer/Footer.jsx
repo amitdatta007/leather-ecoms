@@ -52,8 +52,8 @@ const Footer = ({ settings }) => {
                         <h3 className="text-[22px] font-bold text-text-muted-50">USEFUL LINKS</h3>
                         <div className="flex flex-col gap-3">
                             <Link className="text-white" href='/about-us'>About Us</Link>
-                            <Link className="text-white" href=''>Contact Us</Link>
-                            <Link className="text-white" href=''>Easy Return Policy</Link>
+                            <Link className="text-white" href='/contact-us'>Contact Us</Link>
+                            <Link className="text-white" href='/return-policy'>Easy Return Policy</Link>
                             <Link className="text-white" href=''>Customer Support</Link>
                             <Link className="text-white" href=''>EMI (Up to 36 Months)</Link>
                             <Link className="text-white" href=''>Fast Delivery Service</Link>

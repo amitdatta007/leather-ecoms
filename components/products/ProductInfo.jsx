@@ -91,6 +91,7 @@ const ProductInfo = ({ product }) => {
                     }
                     <span className="text-2xl text-primary font-semibold leading-tight">{product?.sell_price ? product?.sell_price : product?.price}৳</span>
                 </div>
+                <div dangerouslySetInnerHTML={{ __html: product?.description }}></div>
             </div>
 
             <div className="pt-6 pb-8 border-b border-border flex flex-col gap-5">

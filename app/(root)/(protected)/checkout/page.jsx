@@ -2,6 +2,7 @@
 
 import { makeOrder } from "@/actions/products";
 import { clearCart } from "@/lib/app/features/cart/cartSlice";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
@@ -10,6 +11,7 @@ const CheckoutPage = () => {
     const products = useSelector((state) => state.cart.cart);
     const dispatch = useDispatch();
     const router = useRouter();
+    const { data: session, status } = useSession();
 
     const handleOrder = async(e) => {
         e.preventDefault();
@@ -31,7 +33,7 @@ const CheckoutPage = () => {
             phoneNumber: phone,
             deliveryAddress: address,
             email: null,
-            deliveryAreaId: 1
+            deliveryAreaId: 1,
         }
 
 
@@ -40,8 +42,10 @@ const CheckoutPage = () => {
             return
         }
 
+       
 
         const res = await makeOrder({
+            user_id: session?.user?.id,
             order_info: orderInfo,
             products: orderProducts
         });

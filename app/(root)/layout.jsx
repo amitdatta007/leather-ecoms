@@ -7,6 +7,7 @@ import { getCategories } from "@/actions/products";
 import { getSettings } from "@/actions/others";
 import { auth } from "@/lib/auth";
 import AuthProvider from "@/components/providers/AuthProvider";
+import { SessionProvider } from 'next-auth/react'
 
 const PublicLayout = async ({ children }) => {
     const [categories, settings] = await Promise.all([
@@ -18,14 +19,17 @@ const PublicLayout = async ({ children }) => {
 
 
 
+
     return (
         <AuthProvider session={session}>
-            <Navbar categories={categories?.data} settings={settings?.data} />
-            {children}
-            <PoliciesOverview />
-            <PaymentInfo />
-            {/* <ShortDescription /> */}
-            <Footer settings={settings?.data} />
+            <SessionProvider session={session}>
+                <Navbar categories={categories?.data} settings={settings?.data} />
+                {children}
+                <PoliciesOverview />
+                <PaymentInfo />
+                {/* <ShortDescription /> */}
+                <Footer settings={settings?.data} />
+            </SessionProvider>
         </AuthProvider>
     );
 };

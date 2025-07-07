@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { AlignJustify, Heart, Search, User, X } from "lucide-react";
+import { AlignJustify, ChevronUp, Heart, Search, User, X } from "lucide-react";
 import MobileDropdown from "./MobileDropdown";
 import getImageUrl from "@/utils/getImageUrl";
 import { useEffect, useRef, useState } from "react";
@@ -19,6 +19,7 @@ const MobileSideBar = ({ isOpen, setIsOpen, logo, categories }) => {
     const [products, setProducts] = useState([]);
     const inputRef = useRef();
     const router = useRouter();
+    const [subMenuIndex, setSubMenuIndex] = useState(0);
 
 
     const handleSearch = (e) => {
@@ -57,6 +58,21 @@ const MobileSideBar = ({ isOpen, setIsOpen, logo, categories }) => {
         router.push(url)
     }
 
+
+    const openCloseSubMenu = (i) => {
+        if (i === 0) {
+            setSubMenuIndex(0)
+        } if (i === subMenuIndex) {
+            setSubMenuIndex(0)
+        } else {
+            setSubMenuIndex(i)
+        }
+    }
+
+
+    useEffect(() => {
+        console.log(subMenuIndex)
+    }, [subMenuIndex])
 
     return (
         <div className="lg:hidden flex items-center">
@@ -150,11 +166,34 @@ const MobileSideBar = ({ isOpen, setIsOpen, logo, categories }) => {
                         <div className={cn(
                             tabIndex === 1 ? 'block' : 'hidden'
                         )}>
-                            <div className="flex flex-col gap-1 mt-2">
+                            <div className="flex flex-col mt-2 ">
 
                                 {
                                     categories?.map((category, i) => (
-                                        <NavLink key={i} href={`/products?categories=${category?.slug}`} className="py-3 border-b text-sm font-medium" activeClassName='text-primary'>{category?.name}</NavLink>
+                                        <div key={i} className="relative">
+
+                                            <button onClick={() => openCloseSubMenu(i + 1)} className="w-full py-3 flex justify-between border-b animate">
+                                                <NavLink key={i} href={`/products?categories=${category?.slug}`} className=" text-sm font-medium" activeClassName='text-primary' onClick={() => {
+                                                    setIsOpen(false)
+                                                }}>{category?.name}</NavLink>
+                                                <ChevronUp strokeWidth={1.4} className={cn(
+                                                    'animate',
+                                                    subMenuIndex !== (i + 1) && 'rotate-90'
+                                                )} />
+                                            </button>
+
+
+                                            <div className={cn(
+                                                "pl-6 text-sm overflow-hidden animate",
+                                                subMenuIndex !== (i + 1) && 'h-0'
+                                            )}>
+                                                {
+                                                    category?.sub_categories.map((subCat) => (<div className='flex flex-col' key={subCat.id}>
+                                                        <Link href={`/products?categories=${category?.slug}&sub_categories=${subCat.slug}`} className='hover:text-primary mt-2'>{subCat.name}</Link>
+                                                    </div>))
+                                                }
+                                            </div>
+                                        </div>
                                     ))
                                 }
                             </div>

@@ -42,7 +42,7 @@ const CategoryWiseProduct = ({ category }) => {
 
     return (
         <div className="flex w-full flex-col md:flex-row gap-14 md:gap-6">
-            <div className="w-full md:w-[25%] bg-red-400 relative">
+            <div className="w-full md:w-[25%] relative">
                 <div className="absolute w-full h-full top-0 left-0 bg-black/50 grid place-content-center">
                     <h3 className="text-center text-white text-3xl font-semibold capitalize">{category?.name}</h3>
                 </div>

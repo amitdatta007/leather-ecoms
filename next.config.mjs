@@ -11,7 +11,7 @@ const nextConfig = {
             },
             {
                 protocol: 'https',
-                hostname: 'admin.dressivabd.com',
+                hostname: 'leatheradmin.mindskills.app',
                 port: '', // Leave this empty unless you're using a specific port
                 pathname: '/**', // Adjust the pathname based on the structure of your image URLs
             },

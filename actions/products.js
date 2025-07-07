@@ -66,7 +66,6 @@ export const getBrands = async () => {
 export const makeOrder = async (data) => {
 
 
-
     try {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/order`, {
             method: "POST",
@@ -84,9 +83,9 @@ export const makeOrder = async (data) => {
     }
 }
 
-export const getFirstCampaign = async () => {
+export const getCampaigns = async () => {
     try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/first-campaign`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/campaign`, {
             cache: "no-cache"
         });
 
@@ -98,19 +97,6 @@ export const getFirstCampaign = async () => {
     }
 }
 
-export const getLastCampaign = async () => {
-    try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/last-campaign`, {
-            cache: "no-cache"
-        });
-
-        if (!res.ok) {
-            throw new Error('Network Error!');
-        } return await res.json();
-    } catch (err) {
-        return { message: 'Somthing Want wrong!' };
-    }
-}
 
 export const getHighlightProduct = async () => {
     try {
@@ -201,7 +187,7 @@ export const searchProduct = async (searchParams) => {
     }
 }
 
-export const getOrderInfo = async(trackId) => {
+export const getOrderInfo = async (trackId) => {
     try {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/order/${trackId}`, {
             cache: "no-cache"
