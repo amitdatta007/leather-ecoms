@@ -67,7 +67,7 @@ const Campaign = ({ campaign }) => {
                 </div>
                 <h3 className="text-2xl lg:text-[26px] font-semibold">{campaign?.campaign_name}</h3>
                 <p className="text-paragraph">{campaign?.remarks}</p>
-                <Link href='/' className="bg-primary hover:bg-primary-muted py-3.5 px-7 text-white text-sm font-semibold">VIEW CAMPAIGN</Link>
+                <Link href={`/campaign/${campaign?.id}`} className="bg-primary hover:bg-primary-muted py-3.5 px-7 text-white text-sm font-semibold">VIEW CAMPAIGN</Link>
             </div>
             <Link href='/' className="w-full sm:w-1/2 md:w-3/4">
                 <Image className="w-full aspect-square md:aspect-auto" alt="" src={getImageUrl(campaign?.img)} width={600} height={400} />

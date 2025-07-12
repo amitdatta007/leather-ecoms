@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 // import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter  } from "react-icons/fa6";
 
 const ProductInfo = ({ product }) => {
-    const [quantity, setQuantity] = useState(0);
+    const [quantity, setQuantity] = useState(1);
     const [selectedSize, setSelectedSize] = useState(null);
     // const [maxStock, setMaxStock] = useState(product?.product_stock | 100);
     const [quantityError, setQuantityError] = useState(null);
@@ -91,7 +91,7 @@ const ProductInfo = ({ product }) => {
                     }
                     <span className="text-2xl text-primary font-semibold leading-tight">{product?.sell_price ? product?.sell_price : product?.price}৳</span>
                 </div>
-                <div dangerouslySetInnerHTML={{ __html: product?.description }}></div>
+                <div dangerouslySetInnerHTML={{ __html: product?.short_description }}></div>
             </div>
 
             <div className="pt-6 pb-8 border-b border-border flex flex-col gap-5">

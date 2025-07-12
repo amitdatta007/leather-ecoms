@@ -23,8 +23,8 @@ const CartPage = () => {
         setIsMounted(true);
     }, []);
 
-    if (!isMounted) return null; // or a loading spinner
-
+    if (!isMounted) return null;
+    
     return (
         <main className='mt-[72px] lg:mt-[150px] bg-[#FFFCF4]'>
             <Breadcrumb title='Cart Product' />

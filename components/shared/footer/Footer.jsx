@@ -47,7 +47,7 @@ const Footer = ({ settings }) => {
                 </div>
             </section>
             <section className="py-10">
-                <div className="wrapper grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+                <div className="wrapper grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
                     <div className="flex flex-col gap-6">
                         <h3 className="text-[22px] font-bold text-text-muted-50">USEFUL LINKS</h3>
                         <div className="flex flex-col gap-3">
@@ -55,10 +55,8 @@ const Footer = ({ settings }) => {
                             <Link className="text-white" href='/contact-us'>Contact Us</Link>
                             <Link className="text-white" href='/return-policy'>Easy Return Policy</Link>
                             <Link className="text-white" href=''>Customer Support</Link>
-                            <Link className="text-white" href=''>EMI (Up to 36 Months)</Link>
-                            <Link className="text-white" href=''>Fast Delivery Service</Link>
-                            <Link className="text-white" href=''>Official Brand Warranty</Link>
-                            <Link className="text-white" href=''>Frequently Asked Questions</Link>
+                            {/* <Link className="text-white" href=''>Fast Delivery Service</Link> */}
+                            {/* <Link className="text-white" href=''>Frequently Asked Questions</Link> */}
                         </div>
                     </div>
                     <div className="flex flex-col gap-6">
@@ -75,16 +73,10 @@ const Footer = ({ settings }) => {
                     <div className="flex flex-col gap-6">
                         <h3 className="text-[22px] font-bold text-text-muted-50">MY ACCOUNT</h3>
                         <div className="flex flex-col gap-3">
-                            <Link className="text-white" href=''>My Account</Link>
-                            <Link className="text-white" href=''>Wishlist</Link>
-                            <Link className="text-white" href=''>Compare</Link>
-                            <Link className="text-white" href=''>Order Return</Link>
+                            <Link className="text-white" href='/my-account'>My Account</Link>
+                            <Link className="text-white" href='/my-account/wishlist'>Wishlist</Link>
+                            <Link className="text-white" href='/my-account/order-return'>Order Return</Link>
                             <Link className="text-white" href='/cart'>Your products on Cart</Link>
-                        </div>
-                    </div>
-                    <div className="flex flex-col gap-6">
-                        <h3 className="text-[22px] font-bold text-text-muted-50">BLOG LINKS</h3>
-                        <div className="flex flex-col gap-3">
                         </div>
                     </div>
                 </div>

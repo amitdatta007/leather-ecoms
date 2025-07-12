@@ -203,3 +203,24 @@ export const getOrder = async (id) => {
         return { message: 'Somthing Want wrong!' };
     }
 }
+export const checkCoupon = async (orderValue, couponCode) => {
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/check-coupon `, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            cache: "no-cache", // Optional: prevents caching
+            body: JSON.stringify({
+                minimum_order: orderValue,
+                coupon_code: couponCode
+            }),
+        });
+
+        if (!res.ok) {
+            throw new Error('Network Error!');
+        } return await res.json();
+    } catch (err) {
+        return { message: 'Somthing Want wrong!' };
+    }
+}
