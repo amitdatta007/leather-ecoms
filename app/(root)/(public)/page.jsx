@@ -47,7 +47,7 @@ const HomePage = async () => {
 
             <ProductByCategories categories={categories?.data} />
 
-            <TopBrands brands={brands?.data} />
+            {/* <TopBrands brands={brands?.data} /> */}
         </main>
     );
 };

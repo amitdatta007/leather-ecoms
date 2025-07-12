@@ -26,7 +26,7 @@ const PublicLayout = async ({ children }) => {
                 <Navbar categories={categories?.data} settings={settings?.data} />
                 {children}
                 <PoliciesOverview />
-                <PaymentInfo />
+                {/* <PaymentInfo /> */}
                 {/* <ShortDescription /> */}
                 <Footer settings={settings?.data} />
             </SessionProvider>

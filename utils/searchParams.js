@@ -8,6 +8,17 @@ export const createCategoriesParams = (categories) => {
     }
     return `${url}`
 }
+export const createSubCategoriesParams = (subCats) => {
+    const url = new URLSearchParams(window.location.search)
+
+    if (subCats?.length > 0) {
+        url.set('sub_categories', subCats?.join(' '))
+    } else{
+        url.has('sub_categories') && url.delete('sub_categories');
+    }
+    return `${url}`
+}
+
 export const createSizesParams = (sizes) => {
     const url = new URLSearchParams(window.location.search)
 

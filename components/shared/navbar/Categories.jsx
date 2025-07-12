@@ -10,9 +10,6 @@ const Categories = ({ categories }) => {
     const [isOpen, setIsOpen] = useState(false);
     const containerRef = useRef(null);
 
-    useEffect(() => {
-        console.log(categories)
-    }, [categories])
 
     return (
         <div className='hidden lg:block h-[54PX] w-[25%] max-w-72 relative' ref={containerRef} onMouseEnter={() => setIsOpen(true)}
