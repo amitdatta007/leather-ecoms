@@ -6,10 +6,9 @@ import React from 'react';
 const SingleCampaign = async({ params }) => {
     const campaign = await getSingleCampaign(params?.id);
 
-    // console.log(cam)
 
     return (
-        <main className='mt-[72px] lg:mt-[150px]'>
+        <main className='mt-[72px] lg:mt-[150px] bg-[#FFFCF4]'>
             <Breadcrumb title='Campaign Name' />
             <div className='py-10 wrapper grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5'>
                 {

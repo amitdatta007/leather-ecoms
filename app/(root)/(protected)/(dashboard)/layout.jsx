@@ -52,13 +52,13 @@ const DashboardLayout = ({ children }) => {
                     >
                         Account Details
                     </NavLink>
-                    <NavLink
+                    {/* <NavLink
                         href='/my-account/my-coupons'
                         className='py-2.5 px-3.5 text-sm font-semibold hover:bg-black/5 w-full'
                         activeClassName='bg-black/10'
                     >
                         My Coupons
-                    </NavLink>
+                    </NavLink> */}
                     <NavLink
                         href='/my-account/wishlist'
                         className='py-2.5 px-3.5 text-sm font-semibold hover:bg-black/5 w-full'

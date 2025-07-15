@@ -8,7 +8,6 @@ const OrdersPage = async () => {
     const profile = await getProfile(session?.user?.id);
     const orders = profile?.user?.order;
 
-    console.log(orders)
 
 
     return (

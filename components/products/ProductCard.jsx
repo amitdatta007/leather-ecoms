@@ -26,7 +26,7 @@ const ProductCard = ({ className, product }) => {
         <div className={cn('flex flex-col gap-4 pb-4', className)}>
             <div className='w-full overflow-hidden'>
                 {
-                    product?.img?.[0] && 
+                    product?.img?.[0] &&
                     <Image alt='' className='transition-all duration-300 ease-out hover:scale-110 aspect-[4/5]' src={getImageUrl(product?.img[0])} width={400} height={500} />
                 }
             </div>
@@ -34,10 +34,10 @@ const ProductCard = ({ className, product }) => {
                 <Link href={`/products/${product?.slug}`} className='text-center line-clamp-2 text-sm text-text-muted-100 hover:text-paragraph'>{product?.title}</Link>
                 <div className='flex justify-center items-center gap-2'>
                     {
-                        product?.sell_price && <p className='text-sm text-text-muted-50 line-through'>{product?.price}৳</p>
+                        product?.final_price && <p className='text-sm text-text-muted-50 line-through'>{parseFloat(product?.price).toFixed(2)}৳</p>
                     }
 
-                    <p className='font-semibold text-primary'>{product?.sell_price ? product?.sell_price : product?.price}৳</p>
+                    <p className='font-semibold text-primary'>{product?.final_price ? parseFloat(product?.final_price).toFixed(2) : parseFloat(product?.price).toFixed(2)}৳</p>
                 </div>
 
                 <button

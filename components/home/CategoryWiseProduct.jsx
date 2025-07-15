@@ -12,7 +12,6 @@ import getImageUrl from "@/utils/getImageUrl";
 
 const CategoryWiseProduct = ({ category }) => {
 
-    console.log('cat', category)
 
     const [isBeginning, setIsBeginning] = useState(true);
     const [isEnd, setIsEnd] = useState(false);

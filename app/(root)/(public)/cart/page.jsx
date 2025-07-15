@@ -14,7 +14,7 @@ const CartPage = () => {
 
     useEffect(() => {
         const sum = products.reduce((accumulator, product) => {
-            return accumulator + ((product.sell_price ? product.sell_price : product.price) * [product.quantity])
+            return accumulator + ((product.final_price ? product.final_price : product.price) * [product.quantity])
         }, 0);
         setTotalPrice(sum);
     }, [products])

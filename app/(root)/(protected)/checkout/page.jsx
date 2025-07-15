@@ -23,7 +23,7 @@ const CheckoutPage = () => {
 
     useEffect(() => {
         const sum = products.reduce((accumulator, product) => {
-            return accumulator + ((product.sell_price ? product.sell_price : product.price) * [product.quantity])
+            return accumulator + ((product.final_price ? product.final_price : product.price) * [product.quantity])
         }, 0);
         setTotalPrice(sum);
     }, [products])
@@ -45,7 +45,6 @@ const CheckoutPage = () => {
             return {
                 product_id: product.id,
                 quantity: product.quantity,
-                variant_id: 1
             }
         });
 
@@ -54,8 +53,7 @@ const CheckoutPage = () => {
             phoneNumber: phone,
             deliveryAddress: address,
             email: null,
-            deliveryAreaId: 1,
-            
+            deliveryAreaId: 1,  
         }
 
 
@@ -89,7 +87,6 @@ const CheckoutPage = () => {
     const applyCoupon = () => {
         checkCoupon(totalPrice, couponCode).then((res) => {
 
-            console.log(res)
 
             if(res?.success){
                 toast.success('Coupon Successfully Applied')
@@ -141,7 +138,7 @@ const CheckoutPage = () => {
                             {products.map((product, i) => (
                                 <div key={i} className="py-3 flex justify-between items-center gap-20">
                                     <p className="text-sm text-text-muted-50">{product?.title} x {product?.quantity}</p>
-                                    <p className="text-sm text-text-muted-50">{product?.sell_price ? (product?.sell_price * product?.quantity).toFixed(2) : (product?.price * product?.price).toFixed(2)}৳</p>
+                                    <p className="text-sm text-text-muted-50">{product?.final_price ? (product?.final_price * product?.quantity).toFixed(2) : (product?.price * product?.price).toFixed(2)}৳</p>
                                 </div>
                             ))}
                         </div>

@@ -39,13 +39,11 @@ const FilterByCategories = ({ catParams, subCatParams, allCategories }) => {
     };
 
     useEffect(() => {
-        console.log("Cats", categories)
 
         router.push(`/products?${createCategoriesParams(categories)}`);
     }, [categories]);
 
     useEffect(() => {
-        console.log("Sub cat", subCats)
         router.push(`/products?${createSubCategoriesParams(subCats)}`);
     }, [subCats])
 

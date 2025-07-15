@@ -23,7 +23,7 @@ const Cart = ({ children }) => {
 
     useEffect(() => {
         const sum = products.reduce((accumulator, product) => {
-            return accumulator + ((product.sell_price ? product.sell_price : product.price) * [product.quantity])
+            return accumulator + ((product.final_price ? product.final_price : product.price) * [product.quantity])
         }, 0);
         setTotalPrice(sum);
     }, [products])
@@ -70,7 +70,7 @@ const Cart = ({ children }) => {
                                             <div className="flex-grow flex justify-between gap-2">
                                                 <div className="flex-grow flex gap-2 flex-col">
                                                     <Link href={`/products/${product?.slug}`} className="text-sm text-paragraph">{product?.title}</Link>
-                                                    <p className="text-sm font-semibold"><span className="text-text-muted-50">{product?.quantity} x </span> <span className="text-primary">{product?.sell_price ? product?.sell_price : product?.price}</span></p>
+                                                    <p className="text-sm font-semibold"><span className="text-text-muted-50">{product?.quantity} x </span> <span className="text-primary">{product?.final_price ? product?.final_price : product?.price}</span></p>
                                                 </div>
                                                 <div className="">
                                                     <button className="p-1" onClick={() => dispatch(removeFromCart(product))}>

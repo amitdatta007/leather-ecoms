@@ -1,8 +1,9 @@
 "use client"
 
+import { makeWishlist } from "@/actions/products";
 import { addToCart, clearCart, openCart } from "@/lib/app/features/cart/cartSlice";
-import { cn } from "@/utils/utils";
-import { Tag } from "lucide-react";
+import { Heart } from "lucide-react";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,7 +12,7 @@ import { toast } from "react-toastify";
 
 const ProductInfo = ({ product }) => {
     const [quantity, setQuantity] = useState(1);
-    const [selectedSize, setSelectedSize] = useState(null);
+    // const [selectedSize, setSelectedSize] = useState(null);
     // const [maxStock, setMaxStock] = useState(product?.product_stock | 100);
     const [quantityError, setQuantityError] = useState(null);
     const inputRef = useRef();
@@ -19,6 +20,7 @@ const ProductInfo = ({ product }) => {
     const cartProducts = useSelector((state) => state.cart.cart);
     const [cartProduct, setCartProduct] = useState(null);
     const router = useRouter();
+    const { data: session, status } = useSession();
 
 
     const handleQuantityInput = (e) => {
@@ -37,6 +39,23 @@ const ProductInfo = ({ product }) => {
             setQuantity((prevQuantity) => prevQuantity - 1);
             inputRef.current.value = quantity - 1;
         }
+    }
+
+    const handleWishlist = () => {
+        const data = {
+            customer_id: session?.user?.id,
+            product_id: product?.id
+        }
+
+        makeWishlist(data).then((res) => {
+
+
+            if(res.status === "success"){
+                toast.success(res.message)
+            } else{
+                toast.error(res.message)
+            }
+        })
     }
 
 
@@ -87,9 +106,9 @@ const ProductInfo = ({ product }) => {
 
                 <div className="flex items-center gap-2">
                     {
-                        product?.sell_price && <span className='text-xl text-paragraph leading-tight line-through'>{product?.price}৳</span>
+                        product?.final_price && <span className='text-xl text-paragraph leading-tight line-through'>{product?.price}৳</span>
                     }
-                    <span className="text-2xl text-primary font-semibold leading-tight">{product?.sell_price ? product?.sell_price : product?.price}৳</span>
+                    <span className="text-2xl text-primary font-semibold leading-tight">{product?.final_price ? product?.final_price : product?.price}৳</span>
                 </div>
                 <div dangerouslySetInnerHTML={{ __html: product?.short_description }}></div>
             </div>
@@ -134,6 +153,11 @@ const ProductInfo = ({ product }) => {
                         </button>
                     </div>
                 </div>
+
+                <button className="flex items-center gap-2 animate hover:text-text-muted-50" onClick={handleWishlist}>
+                    <Heart size={20} />
+                    <span className="text-sm font-semibold">Add to Wishlist</span>
+                </button>
             </div>
         </section>
     );

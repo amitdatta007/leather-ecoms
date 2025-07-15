@@ -28,7 +28,7 @@ const MobileBottomNav = () => {
                         <span className="font-medium text-xs leading-5">Home</span>
                     </NavLink>
                     <NavLink
-                        href='/wishlist'
+                        href='/my-account/wishlist'
                         className="h-[60px] flex gap-1 flex-col items-center justify-center text-paragraph"
                         activeClassName="text-primary"
                     >

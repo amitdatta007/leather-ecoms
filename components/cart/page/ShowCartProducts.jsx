@@ -30,7 +30,7 @@ const ShowCartProducts = ({ product }) => {
                 </div>
             </td>
             <td scope="col" className="px-4 py-3 text-paragraph">
-                {product?.sell_price ? product?.sell_price : product?.price}
+                {product?.final_price ? product?.final_price : product?.price}
             </td>
             <td scope="col" className="px-4 py-3">
                 <div className='h-[42px] w-fit flex items-start border overflow-hidden'>
@@ -55,7 +55,7 @@ const ShowCartProducts = ({ product }) => {
                 </div>
             </td>
             <td scope="col" className="px-4 py-3 font-semibold text-primary">
-                {product?.sell_price ? (product?.sell_price * product?.quantity).toFixed(2) : (product?.price * product?.price).toFixed(2)}৳
+                {product?.final_price ? (product?.final_price * product?.quantity).toFixed(2) : (product?.price * product?.price).toFixed(2)}৳
             </td>
         </tr>
     );

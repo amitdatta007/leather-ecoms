@@ -90,10 +90,10 @@ const DesktopSearch = () => {
                                 >{product?.title}</Link>
                                 <div className='flex justify-center items-center gap-2'>
                                     {
-                                        product?.sell_price && <p className='text-sm text-text-muted-50 line-through'>{product?.price}৳</p>
+                                        product?.final_price && <p className='text-sm text-text-muted-50 line-through'>{product?.price}৳</p>
                                     }
 
-                                    <p className='text-xs font-semibold text-primary'>{product?.sell_price ? product?.sell_price : product?.price}৳</p>
+                                    <p className='text-xs font-semibold text-primary'>{product?.final_price ? product?.final_price : product?.price}৳</p>
                                 </div>
                             </div>
                         </div>

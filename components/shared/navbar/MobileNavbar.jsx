@@ -10,6 +10,7 @@ import { searchProduct } from "@/actions/products";
 import { cn } from "@/utils/utils";
 import NavLink from "./NavLink";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 
 
@@ -20,6 +21,7 @@ const MobileSideBar = ({ isOpen, setIsOpen, logo, categories }) => {
     const inputRef = useRef();
     const router = useRouter();
     const [subMenuIndex, setSubMenuIndex] = useState(0);
+    const { data: session, status } = useSession();
 
 
     const handleSearch = (e) => {
@@ -70,9 +72,6 @@ const MobileSideBar = ({ isOpen, setIsOpen, logo, categories }) => {
     }
 
 
-    useEffect(() => {
-        console.log(subMenuIndex)
-    }, [subMenuIndex])
 
     return (
         <div className="lg:hidden flex items-center">
@@ -104,10 +103,10 @@ const MobileSideBar = ({ isOpen, setIsOpen, logo, categories }) => {
                                         <Link className="text-sm font-medium leading-none" href={product?.slug}>{product?.title}</Link>
                                         <div className='flex justify-center items-center gap-2'>
                                             {
-                                                product?.sell_price && <p className='text-sm text-text-muted-50 line-through'>{product?.price}৳</p>
+                                                product?.final_price && <p className='text-sm text-text-muted-50 line-through'>{product?.price}৳</p>
                                             }
 
-                                            <p className='text-xs font-semibold text-primary'>{product?.sell_price ? product?.sell_price : product?.price}৳</p>
+                                            <p className='text-xs font-semibold text-primary'>{product?.final_price ? product?.final_price : product?.price}৳</p>
                                         </div>
                                     </div>
                                 </div>
@@ -150,17 +149,22 @@ const MobileSideBar = ({ isOpen, setIsOpen, logo, categories }) => {
                             <div className="flex flex-col gap-1 mt-2">
                                 <NavLink href='/' exact className="py-3 border-b text-sm font-medium" activeClassName='text-primary'>HOME</NavLink>
                                 <NavLink href='/products' className="py-3 border-b text-sm font-medium" activeClassName='text-primary'>PRODUCTS</NavLink>
-                                <NavLink href='/blogs' className="py-3 border-b text-sm font-medium" activeClassName='text-primary'>BLOGS</NavLink>
-                                <NavLink href='/contact-us' className="py-3 border-b text-sm font-medium" activeClassName='text-primary'>CONTACT US</NavLink>
+                                <NavLink href='/campaign' className="py-3 border-b text-sm font-medium" activeClassName='text-primary'>CAMPAIGN</NavLink>
 
-                                <NavLink href='/wishlist' className="py-3 border-b text-sm font-medium flex items-center gap-2" activeClassName='text-primary'>
+                                <NavLink href='/my-account/wishlist' className="py-3 border-b text-sm font-medium flex items-center gap-2" activeClassName='text-primary'>
                                     <Heart size={16} strokeWidth={2} />
                                     <span>WISHLIST</span>
                                 </NavLink>
-                                <NavLink href='/login' className="py-3 border-b text-sm font-medium flex items-center gap-2" activeClassName='text-primary'>
-                                    <User size={16} strokeWidth={2} />
-                                    <span>LOGIN / REGISTER</span>
-                                </NavLink>
+                                {
+                                    session?.user ? <NavLink href='/my-account' className="py-3 border-b text-sm font-medium flex items-center gap-2" activeClassName='text-primary'>
+                                        <User size={16} strokeWidth={2} />
+                                        <span>MY ACCOUNT</span>
+                                    </NavLink> : <NavLink href='/login' className="py-3 border-b text-sm font-medium flex items-center gap-2" activeClassName='text-primary'>
+                                        <User size={16} strokeWidth={2} />
+                                        <span>LOGIN / REGISTER</span>
+                                    </NavLink>
+                                }
+
                             </div>
                         </div>
                         <div className={cn(

@@ -56,7 +56,6 @@ export const registerUser = async (data) => {
             body: JSON.stringify(newUser),
         });
 
-        console.log(res)
 
         return {
             status: true,

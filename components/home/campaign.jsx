@@ -8,7 +8,6 @@ import getImageUrl from "@/utils/getImageUrl";
 
 const Campaign = ({ campaign }) => {
 
-    console.log(campaign)
     // const [promotionTimer, setPromotionTimer] = useState(null);
     const [timeLeft, setTimeLeft] = useState({});
     const [targetDate, setTargetDate] = useState(new Date(campaign?.end_date));

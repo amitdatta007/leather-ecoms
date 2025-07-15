@@ -65,7 +65,6 @@ export const getBrands = async () => {
 
 export const makeOrder = async (data) => {
 
-
     try {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/order`, {
             method: "POST",
@@ -79,6 +78,27 @@ export const makeOrder = async (data) => {
             throw new Error('Network Error!');
         } return await res.json();
     } catch (err) {
+
+        return { message: 'Somthing Want wrong!' };
+    }
+}
+
+export const makeWishlist = async (data) => {
+
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/wishList`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json', // Set the content type to JSON
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (!res.ok) {
+            throw new Error('Network Error!');
+        } return await res.json();
+    } catch (err) {
+
         return { message: 'Somthing Want wrong!' };
     }
 }
@@ -205,6 +225,19 @@ export const getOrderInfo = async (trackId) => {
     try {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/order/${trackId}`, {
             cache: "no-cache"
+        });
+
+        if (!res.ok) {
+            throw new Error('Network Error!');
+        } return await res.json();
+    } catch (err) {
+        return { message: 'Somthing Want wrong!' };
+    }
+}
+export const getWishlist = async (id) => {
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/wishList/${id}`, {
+            cache: "no-cache",
         });
 
         if (!res.ok) {

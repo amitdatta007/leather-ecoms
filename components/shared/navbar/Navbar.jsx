@@ -14,7 +14,7 @@ import Categories from "./Categories";
 import { useAuth } from "@/components/providers/AuthProvider";
 import getImageUrl from "@/utils/getImageUrl";
 import NavLink from "./NavLink";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { openCart } from "@/lib/app/features/cart/cartSlice";
 import { useSession } from 'next-auth/react'
 
@@ -25,10 +25,11 @@ const Navbar = ({ settings, categories }) => {
     const [isOpen, setIsOpen] = useState(false);
     // const { authData } = useAuth();
     const dispatch = useDispatch();
+    const products = useSelector((state) => state.cart.cart);
 
     const { data: session, status } = useSession();
 
-    
+
 
 
     return (
@@ -92,20 +93,27 @@ const Navbar = ({ settings, categories }) => {
                                         Products
                                     </NavLink>
                                     <NavLink
-                                        href='/blogs'
+                                        href='/campaign'
                                         exact
                                         className='text-sm font-bold uppercase hover:text-primary'
                                         activeClassName='text-primary'
                                     >
-                                        Blogs
+                                        Campaign
                                     </NavLink>
                                 </div>
                             </div>
 
+                            
+
                             <Cart>
-                                <button onClick={() => dispatch(openCart())} className="h-full grid place-items-center">
-                                    <ShoppingBag className="icon-size" />
-                                </button>
+                                <div className="-mt-1 hover:text-text-muted-50 relative">
+
+                                    <button onClick={() => dispatch(openCart())} className="h-full grid place-items-center">
+                                        <ShoppingBag className="icon-size" />
+
+                                    </button>
+                                    <span className="absolute -top-1 -right-1/3 rounded-full flex justify-center items-center w-4 h-4 text-xs  bg-primary  text-white">{products.length}</span>
+                                </div>
                             </Cart>
                         </div>
                     </div>

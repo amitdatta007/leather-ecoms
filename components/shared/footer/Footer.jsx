@@ -1,6 +1,6 @@
 import Image from "next/image";
 import logo from "@/assets/logo.png";
-import { Facebook, Instagram, Settings } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Settings, Twitter, Youtube } from "lucide-react";
 import Link from "next/link";
 import getImageUrl from "@/utils/getImageUrl";
 
@@ -21,20 +21,17 @@ const Footer = ({ settings }) => {
                         <p className="text-text-muted-50 text-[15px]">{settings?.short_description}</p>
                         <h3 className="text-white text-xl font-bold">Follow Us</h3>
                         <div className="flex gap-1">
-                            <Link href='' className="w-[30px] h-[30px] rounded-full bg-[#38538D] text-white flex justify-center items-center">
+                            <Link href={settings?.fb_link} className="w-[30px] h-[30px] rounded-full bg-[#38538D] text-white flex justify-center items-center">
                                 <Facebook size={18} strokeWidth={1.5} />
                             </Link>
-                            <Link href='' className="w-[30px] h-[30px] rounded-full bg-[#030304] text-white flex justify-center items-center">
-                                <Facebook size={18} strokeWidth={1.5} />
+                            <Link href={settings?.x_link} className="w-[30px] h-[30px] rounded-full bg-[#1DA1F2] text-white flex justify-center items-center">
+                                <Twitter size={18} strokeWidth={1.5} />
                             </Link>
-                            <Link href='' className="w-[30px] h-[30px] rounded-full bg-[#AD3096] text-white flex justify-center items-center">
+                            <Link href={settings?.instagram_link} className="w-[30px] h-[30px] rounded-full bg-[#AD3096] text-white flex justify-center items-center">
                                 <Instagram size={18} strokeWidth={1.5} />
                             </Link>
-                            <Link href='' className="w-[30px] h-[30px] rounded-full bg-[#38538D] text-white flex justify-center items-center">
-                                <Facebook size={18} strokeWidth={1.5} />
-                            </Link>
-                            <Link href='' className="w-[30px] h-[30px] rounded-full bg-[#38538D] text-white flex justify-center items-center">
-                                <Facebook size={18} strokeWidth={1.5} />
+                            <Link href={settings?.linkedin} className="w-[30px] h-[30px] rounded-full bg-[#0a66c2] text-white flex justify-center items-center">
+                                <Linkedin size={18} strokeWidth={1.5} />
                             </Link>
                         </div>
                     </div>
